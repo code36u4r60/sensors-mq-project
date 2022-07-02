@@ -1,7 +1,6 @@
 #include <Arduino.h>
 #include <Wire.h>
 
-
 #include "MQ8.h"
 #include "MQ9.h"
 
@@ -28,39 +27,52 @@ String csvMQ9 = "mq9-0601.csv";
 File myFile;
 const int chipSelect = 10;
 
-
-void saveInCSV(String filename, String msg){
+void saveInCSV(String filename, String msg)
+{
     File dataFile = SD.open(filename, FILE_WRITE);
-    if (dataFile) {
+    if (dataFile)
+    {
         dataFile.println(msg);
         dataFile.close();
-    } else {
+    }
+    else
+    {
         Serial.println("error opening " + filename);
     }
 }
 
-void createCSVHeaders(String filename, String header){
-    if (SD.exists(filename)) {
+void createCSVHeaders(String filename, String header)
+{
+    if (SD.exists(filename))
+    {
         Serial.println(filename + " exists.");
-    } else {
+    }
+    else
+    {
         Serial.println(filename + " doesn't exist. The file will be created.");
         File dataFile = SD.open(filename, FILE_WRITE);
-        if (dataFile) {
+        if (dataFile)
+        {
             dataFile.println(header);
             dataFile.close();
 
             Serial.println("The file was created...");
             Serial.println(" Added content:" + header);
-        } else {
+        }
+        else
+        {
             Serial.println("error opening" + filename);
         }
     }
 }
 
-[[noreturn]] void setup() {
+[[noreturn]] void setup()
+{
 
     Serial.begin(9600);
-    while (!Serial) { ;  // wait for serial port to connect. Needed for native USB port only
+    while (!Serial)
+    {
+        ; // wait for serial port to connect. Needed for native USB port only
     }
 
     pinMode(LED, OUTPUT);
@@ -77,9 +89,11 @@ void createCSVHeaders(String filename, String header){
     // save to file
     Serial.print("Initializing SD card...");
     // see if the card is present and can be initialized:
-    if (!SD.begin(chipSelect)) {
+    if (!SD.begin(chipSelect))
+    {
         Serial.println("Card failed, or not present");
-        while (1);
+        while (1)
+            ;
     }
     Serial.println("card initialized.");
 
@@ -88,8 +102,8 @@ void createCSVHeaders(String filename, String header){
     createCSVHeaders(csvMQ9, mq9A.headersCSV());
 }
 
-
-void loop() {
+void loop()
+{
 
     digitalWrite(LED, HIGH);
 
@@ -106,13 +120,8 @@ void loop() {
     saveInCSV(csvMQ9, mq9A.toCSV());
     saveInCSV(csvMQ9, mq9B.toCSV());
 
-
     digitalWrite(LED, LOW);
-    delay(2000); //2000 ms = 2 sec
+    delay(2000); // 2000 ms = 2 sec
     if (count == 100)
-        delay(600000); //10 min = 600000 ms
+        delay(600000); // 10 min = 600000 ms
 }
-
-
-
-

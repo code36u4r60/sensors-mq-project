@@ -1,5 +1,5 @@
 #include <Arduino.h>
-#include "../lib/MQ/MQ2.h"
+#include "MQ2.h"
 
 
 MQ2 mq2(A0);

@@ -1,0 +1,17 @@
+---
+config:
+- name: CP2104 USB to UART Bridge Controller
+  devices:
+  - 01E4839D
+  - 01D95092
+  - 0232BB2B
+  baud: 115200
+  timeout: 11
+  set-config:
+- name: uThingVOC
+  devices:
+  - '204432753556'
+  - '2064329D3556'
+  baud: 115200
+  timeout: 1
+  set-config: J 1

@@ -12,6 +12,7 @@
   - Side Doc: Documents downloaded from SIDE
   - Others: Images and other things relevant to the project
 - **Jupyter Notebook**: .ipynb files created during the project.
+- **serial-port-reader**: It is a utility made in python that reads information through the serial port. Its functions are: Detect connection and disconnection of devices, process data, display the data read via terminal and save them in csv and/or xlsx.
 - **src**
   - **MQ**: Arduino Library for using MQ sensors in c++
-  - example: Examples of using the MQ library
+  - **example**: Examples of using the MQ library

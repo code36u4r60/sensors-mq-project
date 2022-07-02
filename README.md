@@ -13,5 +13,5 @@
   - Others: Images and other things relevant to the project
 - **Jupyter Notebook**: .ipynb files created during the project.
 - **src**
-  - **MQ**: Library for using MQ sensors in c++
+  - **MQ**: Arduino Library for using MQ sensors in c++
   - example: Examples of using the MQ library
